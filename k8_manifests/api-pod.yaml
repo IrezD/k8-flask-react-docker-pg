@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    tier: backend
+  name: api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: api-pod
+  template:
+    metadata:
+      labels:
+        name: api-pod
+    spec:
+      containers:
+      - image: irezd/python-api:v2
+        name: python-api
+        ports:
+        - containerPort: 5000
+        env:
+          - name: DATABASE_URL
+            value: "postgresql://user:password@db:5432/database"

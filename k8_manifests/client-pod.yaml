@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    tier: frontend
+  name: client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: client-pod
+  template:
+    metadata:
+      labels:
+        name: client-pod
+    spec:
+      containers:
+      - image: irezd/node-client:v2
+        name: node-client
+        ports:
+        - containerPort: 3000
+        env:
+          - name: REACT_APP_API_BASE_URL
+            value: "http://localhost:5000"

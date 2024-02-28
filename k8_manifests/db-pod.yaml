@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    tier: database
+  name: db-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: db-pod
+  template:
+    metadata:
+      labels:
+        name: db-pod
+    spec:
+      containers:
+      - image: postgres:14.0-alpine
+        name: postgres
+        ports:
+        - containerPort: 5432
+        env:
+          - name: POSTGRES_USER
+            value: "user"
+          - name: POSTGRES_PASSWORD
+            value: "password"
+          - name: POSTGRES_DB
+            value: "database"

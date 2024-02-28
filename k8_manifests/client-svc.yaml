@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: client-pod
+    pod-template-hash: 5748cc4687
+  name: client-svc
+spec:
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 3000
+    nodePort: 30015
+  selector:
+    name: client-pod
+  type: NodePort
