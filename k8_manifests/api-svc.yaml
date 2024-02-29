@@ -3,12 +3,11 @@ kind: Service
 metadata:
   labels:
     name: api-pod
-  name: api-svc
+  name: api
 spec:
   ports:
   - port: 5000
     protocol: TCP
     targetPort: 5000
-  type: NodePort
   selector:
     name: api-pod
