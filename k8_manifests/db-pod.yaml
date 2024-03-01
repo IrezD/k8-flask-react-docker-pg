@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
       - image: postgres:14.0-alpine
-        name: postgres
+        name: db
         ports:
         - containerPort: 5432
         env:
           - name: POSTGRES_USER
-            value: "user"
+            value: user
           - name: POSTGRES_PASSWORD
-            value: "password"
+            value: password
           - name: POSTGRES_DB
-            value: "database"
+            value: database

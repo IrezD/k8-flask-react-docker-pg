@@ -19,3 +19,6 @@ spec:
         name: node-client
         ports:
         - containerPort: 3000
+        env:
+          - name: REACT_APP_API_BASE_URL
+            value: "http://localhost:5000"
